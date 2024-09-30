@@ -1,0 +1,12 @@
+services:
+  react:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" # Map container port 3000 to the host port 3000
+    volumes:
+      - .:/app # Mount the current directory to /app inside the container
+      - /app/node_modules # Prevent overwriting of node_modules
+    stdin_open: true
+    tty: true
