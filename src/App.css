@@ -4,3 +4,18 @@
   width: 100vw;
   color: black;
 }
+
+.ui {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: max-content;
+}
+
+.ui button {
+  width: 100%;
+  margin: 0 0 0.5rem 0;
+}

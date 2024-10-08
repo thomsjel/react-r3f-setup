@@ -1,5 +1,7 @@
 import { useState, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
+import Mannequin from "./Mannequin";
+import Ground from "./Ground";
 
 function Box(props) {
   const mesh = useRef();
@@ -21,8 +23,15 @@ export const Scene = () => {
   return (
     <>
       <ambientLight />
-      <directionalLight position={[0, 5, 5]} />
-      <Box position={[0, 0, 0]} />
+      <directionalLight
+        position={[0, 5, 5]}
+        castShadow
+        shadow-mapSize-width={1024 * 2}
+        shadow-mapSize-height={1024 * 2}
+      />
+      {/* <Box position={[0, 0, 0]} /> */}
+      <Mannequin position={[0, 0, 0]} />
+      <Ground />
     </>
   );
 };
