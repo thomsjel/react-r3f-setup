@@ -1,7 +1,9 @@
-import { useState, useRef } from "react";
+import { useState, useRef, Suspense } from "react";
 import { useFrame } from "@react-three/fiber";
+import { Environment } from "@react-three/drei";
 import Mannequin from "./Mannequin";
 import Ground from "./Ground";
+import Loader from "./Loader";
 
 function Box(props) {
   const mesh = useRef();
@@ -24,14 +26,17 @@ export const Scene = () => {
     <>
       <ambientLight />
       <directionalLight
-        position={[0, 5, 5]}
+        position={[0, 5, 3]}
         castShadow
         shadow-mapSize-width={1024 * 2}
         shadow-mapSize-height={1024 * 2}
       />
       {/* <Box position={[0, 0, 0]} /> */}
-      <Mannequin position={[0, 0, 0]} />
+      <Suspense fallback={<Loader />}>
+        <Mannequin position={[0, 0, 0]} />
+      </Suspense>
       <Ground />
+      <Environment preset="city" />
     </>
   );
 };
